@@ -24,11 +24,32 @@ data "aws_ami" "ubuntu" {
   }
 }
 
+resource "aws_security_group" "allow_all" {
+  name        = "allow_all"
+  description = "Allow all inbound traffic"
+  vpc_id      = "${var.vpc_id}"
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
+    prefix_list_ids = ["pl-12c4e678"]
+  }
+}
+
 resource "aws_instance" "web" {
   ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "${var.instance_type}"
   key_name               = "${var.keyname}"
-  vpc_security_group_ids = "${var.vpc_security_group_ids}"
+  vpc_security_group_ids = "${aws_security_group.allow_all.id}"
 
   tags = {
     Name = "${var.tag}"

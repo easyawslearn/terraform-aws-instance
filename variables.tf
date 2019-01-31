@@ -17,4 +17,4 @@ variable "instance_type" {
 }
 
 variable "keyname" {}
-variable "vpc_security_group_ids" {}
+variable "vpc_id" {}
