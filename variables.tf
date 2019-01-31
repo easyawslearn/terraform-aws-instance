@@ -9,3 +9,8 @@ variable "ami_name_value" {
 variable "ami_virtualization_type" {
   default = "hvm"
 }
+variable "instance_type" {
+  default = "t2.micro"
+}
+variable "keyname" {}
+variable "vpc_security_group_ids" {}
