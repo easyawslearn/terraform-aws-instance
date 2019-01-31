@@ -14,18 +14,21 @@ data "aws_ami" "ubuntu" {
     name   = "virtualization-type"
     values = ["${var.ami_virtualization_type}"]
   }
-filter {
-  name = "owner-alias"
-  values = [
-    "amazon"]
-}
+
+  filter {
+    name = "owner-alias"
+
+    values = [
+      "amazon",
+    ]
+  }
 }
 
 resource "aws_instance" "web" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "${var.instance_type}"
-  key_name = "${var.keyname}"
-  vpc_security_group_ids="${var.vpc_security_group_ids}"
+  ami                    = "${data.aws_ami.ubuntu.id}"
+  instance_type          = "${var.instance_type}"
+  key_name               = "${var.keyname}"
+  vpc_security_group_ids = "${var.vpc_security_group_ids}"
 
   tags = {
     Name = "${var.tag}"
