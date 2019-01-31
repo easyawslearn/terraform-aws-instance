@@ -24,6 +24,10 @@ variable "ami_virtualization_type" {
   tag                        = "my-instance"
   ami_name_value             = "amzn-ami-vpc-nat*"
   ami_virtualization_type    = "hvm"
+  instance_type              = "t2.micro"
+  keyname                    = "test.pem"
+  vpc_security_group_ids     = "sg-757g82w"
+
 
 }
 ```
@@ -34,4 +38,7 @@ variable "ami_virtualization_type" {
 - `tag` - Tag name for instance
 - `ami_name_value` - ami name identifier
 - `ami_virtualization_type` - virtualization type of ami
+- `keyname` - key name for ssh access
+- `vpc_security_group_ids` - security group id which you associate to instance
+
 
