@@ -26,7 +26,6 @@ variable "ami_virtualization_type" {
   ami_virtualization_type    = "hvm"
   instance_type              = "t2.micro"
   keyname                    = "test.pem"
-  vpc_security_group_ids     = "sg-757g82w"
 
 
 }
