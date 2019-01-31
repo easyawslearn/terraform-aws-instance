@@ -12,7 +12,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "virtualization-type"
-    values = ["${var.ami_virtualization-type}"]
+    values = ["${var.ami_virtualization_type}"]
   }
 filter {
   name = "owner-alias"
