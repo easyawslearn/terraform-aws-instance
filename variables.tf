@@ -16,5 +16,12 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+variable "iscreate" {
+  default = "true"
+}
+
+variable "sg_id" {
+  default = ""
+}
 variable "keyname" {}
 variable "vpc_id" {}

@@ -25,6 +25,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_security_group" "allow_all" {
+  count  = "${var.iscreate == "" ? 1 : 0}"
   name        = "allow_all"
   description = "Allow all inbound traffic"
   vpc_id      = "${var.vpc_id}"
@@ -49,7 +50,7 @@ resource "aws_instance" "web" {
   ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "${var.instance_type}"
   key_name               = "${var.keyname}"
-  vpc_security_group_ids = "${aws_security_group.allow_all.id}"
+  vpc_security_group_ids = "${var.sg_id == "" ? aws_security_group.allow_all.id : var.sg_id}"
 
   tags = {
     Name = "${var.tag}"
