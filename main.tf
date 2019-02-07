@@ -25,7 +25,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_security_group" "allow_all" {
-  count  = "${var.iscreate == "" ? 1 : 0}"
+  count       = "${var.iscreate == "" ? 1 : 0}"
   name        = "allow_all"
   description = "Allow all inbound traffic"
   vpc_id      = "${var.vpc_id}"

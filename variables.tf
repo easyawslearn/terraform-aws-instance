@@ -23,5 +23,6 @@ variable "iscreate" {
 variable "sg_id" {
   default = ""
 }
+
 variable "keyname" {}
 variable "vpc_id" {}
