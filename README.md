@@ -38,6 +38,6 @@ variable "ami_virtualization_type" {
 - `ami_name_value` - ami name identifier
 - `ami_virtualization_type` - virtualization type of ami
 - `keyname` - key name for ssh access
-- `vpc_security_group_ids` - security group id which you associate to instance
+- `sg_id` - security group id which you associate to instance
 
 
