@@ -26,8 +26,8 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_security_group" "allow_all" {
   count       = "${var.iscreate == "" ? 1 : 0}"
-  name        = "allow_all"
-  description = "Allow all inbound traffic"
+  name        = "instance_sg"
+  description = "Allow all inbound traffic for security group"
   vpc_id      = "${var.vpc_id}"
 
   ingress {
