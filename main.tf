@@ -24,10 +24,13 @@ data "aws_ami" "ubuntu" {
   }
 }
 
+/*
+// Use Security Group module to create security group
 module "security_group" {
   source = "git::https://github.com/Patelvijaykumar/terraform-aws-security-group"
   vpc_id = "${var.vpc_id}"
 }
+*/
 
 resource "aws_security_group" "allow_all" {
   count       = "${var.iscreate == "" ? 1 : 0}"
